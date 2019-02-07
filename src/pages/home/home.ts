@@ -7,28 +7,29 @@ import firebase from 'firebase';
 })
 export class HomePage {
 
-    private userName: any;
-    private userEmail: any;
-    private userId : any;
+  private userName: any;
+  private userEmail: any;
+  private userId: any;
   constructor(public navCtrl: NavController,
-    private alertCtrl : AlertController
-    ) {
-        this.initPage();
+    private alertCtrl: AlertController
+  ) {
+    this.initPage();
   }
 
-  initPage(){
+  initPage() {
     var user = firebase.auth().currentUser;
     console.log(user);
 
-  if (user) {
+    if (user) {
       this.userName = user.displayName;
       this.userEmail = user.email;
       this.userId = user.uid;
-  } else {
-  // No user is signed in.
+    } else {
+      // No user is signed in.
+    }
   }
-  }
-  logout(){
+
+  logout() {
     const confirm = this.alertCtrl.create({
       title: 'Log out',
       message: 'You really want to log out?',
@@ -53,7 +54,7 @@ export class HomePage {
       ]
     });
     confirm.present();
- 
-    
+
+
   }
 }
